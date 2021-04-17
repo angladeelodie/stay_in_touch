@@ -1,6 +1,7 @@
 const { ipcRenderer } = require("electron");
 
-const { Chart, registerables } = require("chart.js");
+const { Chart, LineController, LineElement, PointElement, LinearScale, Title, RadarController } = require("chart.js");
+Chart.register(LineController, LineElement, PointElement, LinearScale, Title);
 //const robot = require("robotjs");
 class App {
   constructor() {
@@ -33,74 +34,179 @@ class App {
 
   drawChart() {
    
-    var ctx = document.getElementById("myChart");
-    ctx.chartColors = {
-      red: "rgb(255, 99, 132)",
-      orange: "rgb(255, 159, 64)",
-      yellow: "rgb(255, 205, 86)",
-      green: "rgb(75, 192, 192)",
-      blue: "rgb(54, 162, 235)",
-      purple: "rgb(153, 102, 255)",
-      grey: "rgb(231,233,237)",
-    };
+   
 
-    var data = {
+    var data1 = {
       labels: [
-        "Eating",
-        "Drinking",
-        "Sleeping",
-        "Designing",
-        "Coding",
-        "Cycling",
-        "Running",
+        "HAPPINESS",
+        "JEALOUSY",
+        "LOVE",
+        "FEAR",
+        "ANGRINESS",
+        "SADNESS",
       ],
       datasets: [
         {
           label: "USER1",
-          backgroundColor: "rgba(179,181,198,0.2)",
-          borderColor: "rgba(179,181,198,1)",
-          pointBackgroundColor: "rgba(179,181,198,1)",
-          pointBorderColor: "#fff",
-          pointHoverBackgroundColor: "#fff",
-          pointHoverBorderColor: "rgba(179,181,198,1)",
-          data: [65, 59, 90, 81, 56, 55, 40],
+          backgroundColor: "rgba(255,255,255,0.0)",
+          borderColor: "rgba(0,0,0,1)",
+          borderColor: "rgba(0,0,0,1)",
+          borderColor: "rgba(0,0,0,1)",
+          pointHoverBackgroundColor: "rgba(28,78,214,1)",
+          pointHoverBorderColor: "rgba(28,78,214,1)",
+          data: [65, 59, 90, 81, 56, 55],
         },
         {
           label: "USER2",
-          backgroundColor: "rgba(255,99,132,0.2)",
-          borderColor: "rgba(255,99,132,1)",
-          pointBackgroundColor: "rgba(255,99,132,1)",
-          pointBorderColor: "#fff",
-          pointHoverBackgroundColor: "#fff",
-          pointHoverBorderColor: "rgba(255,99,132,1)",
-          data: [28, 48, 40, 19, 96, 27, 100],
+          backgroundColor: "rgba(255,255,255,0.0)",
+          borderColor: "rgba(0,0,0,1)",
+          borderColor: "rgba(0,0,0,1)",
+          borderColor: "rgba(0,0,0,1)",
+          pointHoverBackgroundColor: "rgba(28,78,214,1)",
+          pointHoverBorderColor: "rgba(28,78,214,1)",
+          data: [28, 48, 40, 19, 96, 27],
+        },
+        {
+          label: "USER3",
+          backgroundColor: "rgba(255,255,255,0.0)",
+          borderColor: "rgba(0,0,0,1)",
+          borderColor: "rgba(0,0,0,1)",
+          borderColor: "rgba(0,0,0,1)",
+          pointHoverBackgroundColor: "rgba(28,78,214,1)",
+          pointHoverBorderColor: "rgba(28,78,214,1)",
+          data: [52, 30, 100, 67, 23, 27],
         },
       ],
     };
-    var options = {
+
+    var data2 =  {
+      labels:  ["USER1","USER2","USER3","USER4","USER5","USER6",],
+      datasets: [{
+        label: false,
+        data: [65, 59, 80, 81, 56, 55, 40],
+        backgroundColor: [
+          'rgba(0, 0, 0, 1)',   
+        ],
+        borderColor: [
+          'rgba(0, 0, 0, 0)',   
+        ],
+        borderWidth: 1.5
+      }]
+    };
+
+    var options2 = {
+      plugins: {
+        legend: {
+            display: false,
+        }
+      },
+      barThickness: 10,
+      hoverBackgroundColor: "blue",
+      scales: {
+        x:{
+          ticks:{
+            color:"black",
+            font:{
+              size:15,
+            }
+
+          },
+          grid:{
+            display:false,
+            drawBorder:false,
+          },
+        
+          
+        },
+        y:{
+          ticks:{
+            display:false,
+          },
+          grid:{
+            display:false,
+            drawBorder:false,
+          },
+          
+        }
+      }
+    }
+
+
+    var options1 = {
+     layout:{
+      padding:10
+     },
+      responsive: true,
+      borderWidth: 1.5,
+      pointRadius:0,
+      pointHoverRadius:15,
+      pointHitRadius:40,
       tooltips: {
         enabled: false,
       },
-      scale: {
-        ticks: {
+      plugins:{
+        legend:{
           display: false,
-          maxTicksLimit: 1
+          labels:{
+            boxHeight:50,
+            color:"black"
+          }
         },
-        pointLabels :{
-          display:true,
-          fontStyle: "bold",
-       }
+        tooltips:{
+          enabled:true,
+          titleColor: "red",
+        }
       },
+      
+      scales: {
+        r:{
+          grid: {
+            display: false,
+          },
+          ticks: {
+            display:false,
+           },
+           angleLines: {
+             display:false,
+           },
+           gridLines: {
+             display:false,
+             tickMarkLength: 0
+           },
+           pointLabels: {
+             color:"black",
+             font:{
+               size:15,
+
+             },
+          },
+          suggestedMin: 50,
+          suggestedMax: 120
+        }
+      }
     };
-    var myRadarChart = new Chart(ctx, {
+
+    var chart1 = document.getElementById("chart1");
+    var chart2 = document.getElementById("chart2");
+    // Chart.defaults.font.size = 26;
+    Chart.defaults.font.family = "inter";
+    Chart.defaults.plugins.tooltip.enabled = false;
+    
+
+    
+    var radarChart = new Chart(chart1, {
       type: "radar",
-      data: data,
-      options: options,
-    });
+      data: data1,
+      options: options1,
+    });  
 
-
-
-    myRadarChart.update(); 
+    var barChart = new Chart(chart2, {
+      type: "bar",
+      data: data2,
+      options: options2,
+    }); 
+    
+    
   }
   onMessage(event, message) {
     this.messageCount++;
