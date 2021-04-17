@@ -94,6 +94,76 @@ class App {
       }]
     };
 
+    var data3  = {
+      labels:  ["HAPPINESS","JEALOUSY","LOVE","FEAR","ANGRINESS","SADNESS",],
+      datasets: [{
+        backgroundColor: [
+          'rgba(0, 0, 0, 1)',   
+        ],
+        data: [{
+          x: 0,
+          y: 30,
+          r: 15,
+          name: "Performance", 
+          label:1,
+        }, {
+          x: 20,
+          y: 30,
+          r: 60
+        },
+        {
+          x: 40,
+          y: 30,
+          r: 10
+        },
+        {
+          x: 60,
+          y: 30,
+          r: 50
+        },
+        {
+          x: 80,
+          y: 30,
+          r: 20
+        }],
+      }]
+    };
+
+    var options3 = {
+      plugins: {
+        legend: {
+            display: false,
+        }
+      },
+      hoverBackgroundColor: "blue",
+      scales: {
+        x:{
+          ticks:{
+            color:"transparent",
+            font:{
+              size:15,
+            }
+
+          },
+          grid:{
+            display:false,
+            drawBorder:false,
+          },
+        
+          
+        },
+        y:{
+          ticks:{
+            display:false,
+          },
+          grid:{
+            display:false,
+            drawBorder:false,
+          },
+          
+        }
+      }
+    };
     var options2 = {
       plugins: {
         legend: {
@@ -188,6 +258,7 @@ class App {
 
     var chart1 = document.getElementById("chart1");
     var chart2 = document.getElementById("chart2");
+    var chart3 = document.getElementById("chart3");
     // Chart.defaults.font.size = 26;
     Chart.defaults.font.family = "inter";
     Chart.defaults.plugins.tooltip.enabled = false;
@@ -204,6 +275,12 @@ class App {
       type: "bar",
       data: data2,
       options: options2,
+    }); 
+
+    var bubbleChart = new Chart(chart3, {
+      type: "bubble",
+      data: data3,
+      options: options3,
     }); 
     
     

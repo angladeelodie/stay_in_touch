@@ -5,6 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "chart.js": "^3.1.0",
+    "chartjs-plugin-datalabels": "^1.0.0",
     "discord.js": "^12.5.1",
     "electron-squirrel-startup": "^1.0.0",
     "johnny-five": "^2.0.0",
