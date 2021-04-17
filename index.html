@@ -1,0 +1,75 @@
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <script src="App.js"></script>
+    <style>
+      @import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+
+      body {
+        font-family: Inter;
+        margin: 0px;
+        padding: 0px;
+        background-color: rgb(47, 47, 47);
+        width:100vw;
+      }
+      h1{
+        font-size: 50px;
+        color:white;
+        text-align: center;
+        width: 100vw;
+        font-weight: 300;
+      }
+      h2, span{
+        
+        font-size: 35px;
+        padding:10px;
+        margin-top: 50px;
+        color:white;
+        font-weight: 300;
+        border: solid 2px white;
+        border-radius:40px;
+      }
+      #wordCount{
+        height: 80vh;
+        background-color: rgba(255,255,255,0.1);
+        overflow-y: scroll;
+      }
+
+      .wordCountDiv{
+        margin:30px;
+      }
+
+      .wordCountNumber{
+        background-color: red;;
+      }
+
+      #averageLetters{
+        background-color: rgb(132, 132, 132);
+        width:100vw;
+        height:5vh;
+        font-size: 35px;
+        color:white;
+        font-weight: 300;
+      }
+      /* #myChart{
+        width:50vw  !important;
+        height:auto !important;
+      } */
+    </style>
+  </head>
+  <body>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <h1>LETTERS SENT PER MESSAGE AVERAGE</h1>
+    <div id="wordCount"></div>
+    <div id="averageLetters"></div>
+    
+  
+  </body>
+</html>
+
+
