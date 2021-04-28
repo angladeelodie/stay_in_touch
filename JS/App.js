@@ -35,7 +35,6 @@ class App {
 
   initListeners() {
     ipcRenderer.on("messageDiscord", this.onMessage.bind(this));
-    var ctx = document.getElementById("myChart");
     // ipcRenderer.on("messageEmbedDiscord", this.onMessageEmbed.bind(this));
   }
 
@@ -91,12 +90,15 @@ class App {
     }    
   }
   onMessage(event, message) {
+    console.log(event);
+    console.log(message);
     this.messageCount++;
     let characterIncrement = message.length;
     this.characterCount = this.characterCount + characterIncrement;
     let averageLetter = 0;
 
     console.log(message);
+
     let wordCountDiv = document.createElement("div");
     let wordCountH2 = document.createElement("span");
     let wordCountNumber = document.createElement("span");

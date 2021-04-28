@@ -125,3 +125,9 @@ a {
   text-align: left;
   font-weight: 600;
 }
+
+#usersList{
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+}

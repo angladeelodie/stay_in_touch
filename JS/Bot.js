@@ -1,6 +1,5 @@
 const { Client, MessageEmbed } = require("discord.js");
-const { Board, Led, Servo} = require("johnny-five");
-
+const { Board, Led, Servo } = require("johnny-five");
 
 class Bot {
   constructor(token, win, led, led2) {
@@ -11,17 +10,19 @@ class Bot {
     this.client.on("ready", this.onReady.bind(this));
     this.client.on("message", this.onMessage.bind(this));
     this.client.login(token);
+    this.users = [];
+
     //this.initArduino();
-    this.led = led; 
+    this.led = led;
     this.led2 = led2;
   }
 
-  initArduino(){
-    this.board = new Board({repl:false});
+  initArduino() {
+    this.board = new Board({ repl: false });
     this.board.on("ready", this.onBoardReady.bind(this));
-    console.log("BOARD STARTED")
+    console.log("BOARD STARTED");
   }
-  onBoardReady(){
+  onBoardReady() {
     console.log("Board ready");
     // const led = new Led(9);
     // led.blink(500);
@@ -34,7 +35,6 @@ class Bot {
     //     led.blink(500);
     // this.led2 = new Led(5);
     //     led2.blink(200);
-
   }
 
   onReady() {
@@ -44,64 +44,24 @@ class Bot {
   onMessage(message) {
     const receivedEmbed = message.embeds[0];
     //console.log(message.content);
-    
 
-    if(receivedEmbed){
+    if (receivedEmbed) {
       this.win.webContents.send("messageDiscord", receivedEmbed);
       console.log(receivedEmbed);
     } else {
       this.win.webContents.send("messageDiscord", message.content);
-      //console.log(message);
-    //   if(this.servo && message.content == "L"){
-    //     //this.servo.sweep();
-    //     //console.log(this.servo);
-    //     this.angle+=10
-    //     this.servo.to(this.angle);
-    //     console.log(this.angle);
 
-    //     this.led = new Led(9);
-    //     // this.led.blink(500);
-    //     this.led.on();
-
-    //     setTimeout(() => {
-    //       this.led.off();
-    //     }, 500);
-    //   }
-    //   if(message.content == "R"){
-        
-    //   //newDiv.style.marginTop = "0vh";
-      
-        
-    //     this.angle-=10
-    //     this.servo.to(this.angle);
-    //     console.log(this.angle);
-
-    //     this.led2 = new Led(5);
-    //     // this.led2.blink(200);
-
-    //     this.led2.on();
-    //     setTimeout(() => {
-    //       this.led2.off();
-    //     }, 500);
-
-    //     // this.led2.off();
-    //   }
-
-    //   if(this.angle >= 180){
-    //     console.log("player 1 wins");
-    //     setTimeout(() => {
-    //       this.angle = 90;
-    //       this.servo.center();
-    //     }, 2000);
-    //   }
-    //   if(this.angle <= 0){
-    //     console.log("player 2 wins");
-    //     setTimeout(() => {
-    //       this.angle = 90;
-    //       this.servo.center();
-    //     }, 2000);
-        
-    //   }
+      var members = message.guild.members;
+      members.fetch().then((data) => {
+        data.forEach((member) => {
+          this.users.push(member);
+        });
+        for (let i = 0; i < this.users.length; i++) {
+          console.log(
+            this.users[i].user.id + "   " + this.users[i].user.username
+          );
+        }
+      });
     }
   }
 }
