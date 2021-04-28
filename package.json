@@ -2,7 +2,7 @@
   "name": "DiscordMonday",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "JS/main.js",
   "dependencies": {
     "chart.js": "^3.1.0",
     "chartjs-plugin-datalabels": "^1.0.0",

@@ -1,95 +1,127 @@
-@import url('https://rsms.me/inter/inter.css');
-html { font-family: 'Inter', sans-serif; }
-
-      body {
-        font-family: Inter;
-        margin: 0px;
-        padding: 0px;
-        background-color: rgb(238, 238, 238);
-        width:100vw;
-      }
-      h1{
-        font-size: 50px;
-        text-transform: uppercase;
-        color:rgb(28, 78, 214);
-        font-weight: 500;
-        margin-bottom: 0;
-      }
-      h2{
-        text-transform: uppercase;
-        font-size: 35px;
-        color:rgb(20, 20, 20);
-        font-weight: 300;
-        margin: 0;
-      }
-
-.container{
-width:100vw;
-height:90vh;
-display: flex;
-flex-direction: row;
-}
-
-.canvasContainer{
-    /* width:100%; */
-    padding:40px;
-}
-
-.leftPanel{
-    width:50vw;
-    height: 100%;
-    border-right: 1px black solid;
-    border-top: 1px black solid;
-   
-}
-.rightPanel{
-    width:50vw;
-    height: 100%;
-    border-right: 1px black solid;
-    border-top: 1px black solid;
-    display: flex;
-    flex-direction: column;
-}
-
-.emotionalLevel{
-    height:50vh;
-    border-right: 1px black solid;
-
-}
-
-.emotionalCircles{
-    height:50vh;
-    border-right: 1px black solid;
-    border-top: 1px black solid;
+@import url("https://rsms.me/inter/inter.css");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+html {
+  /* font-family: "Inter", sans-serif; */
+  font-family:'Oswald', sans-serif;
 }
 
 
 
+body {
+  /* font-family: Inter; */
+  font-family:'Oswald', sans-serif;
+  margin: 0px;
+  padding: 0px;
+  background-color: rgb(238, 238, 238);
+  width: 100vw;
+}
+h1 {
+  font-size: 50px;
+  text-transform: uppercase;
+  color: #2400FF;
+  font-weight: bold;
+  margin-bottom: 0;
+  padding-left: 10px;
+}
+h2 {
+  text-transform: uppercase;
+  font-size: 35px;
+  color: rgb(20, 20, 20);
+  font-weight: 400;
+  margin: 0;
+  padding-left: 10px;
+  padding-bottom: 5vh;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
+.container {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+}
 
-      #wordCount{
-        height: 80vh;
-        background-color: rgba(255,255,255,0.1);
-        overflow-y: scroll;
-      }
+.canvasContainer {
+  padding: 40px;
+}
 
-      .wordCountDiv{
-        margin:30px;
-      }
+.leftPanel {
+  width: 45vw;
+  height: 100%;
+  padding-right: 5vw;
+  /* border-right: 1px black solid;
+  border-top: 1px black solid; */
+}
+.rightPanel {
+  width: 45vw;
+  padding-left: 5vw;
+  height: 100%;
+  /* border-right: 1px black solid;
+  border-top: 1px black solid; */
+  display: flex;
+  flex-direction: column;
+}
 
-      .wordCountNumber{
-        background-color: red;;
-      }
+.emotionalLevel {
+  height: 50vh;
+  /* border-right: 1px black solid; */
+}
 
-      #averageLetters{
-        background-color: rgb(132, 132, 132);
-        width:100vw;
-        height:5vh;
-        font-size: 35px;
-        color:white;
-        font-weight: 300;
-      }
-      /* #myChart{
-        width:50vw  !important;
-        height:auto !important;
-      } */
+.emotionalCircles {
+  height: 50vh;
+  /* border-right: 1px black solid;
+  border-top: 1px black solid; */
+}
+
+#wordCount {
+  height: 80vh;
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow-y: scroll;
+}
+
+.wordCountDiv {
+  margin: 30px;
+}
+
+.wordCountNumber {
+  background-color: red;
+}
+
+#averageLetters {
+  background-color: rgb(132, 132, 132);
+  width: 100vw;
+  height: 5vh;
+  font-size: 35px;
+  color: white;
+  font-weight: 300;
+}
+
+#statsPanel {
+  padding-top: 5vh;
+  padding-left: 10px;
+}
+.userStat {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding-top: 5vh;
+  display: inline-flex;
+  align-items: center;
+}
+.statTitle {
+  text-transform: uppercase;
+  font-size: 22px;
+  width: 70%;
+  text-align: left;
+}
+.statNumber {
+  text-transform: uppercase;
+  font-size: 34px;
+  width: 30%;
+  text-align: left;
+  font-weight: 600;
+}

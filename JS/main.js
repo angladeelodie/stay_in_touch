@@ -12,16 +12,12 @@ function createWindow() {
             contextIsolation: false,
         },
     });
-
     win.loadFile("index.html");
-
 }
 
 function initBot() {
-   
     const { Bot } = require("./Bot");
-    const config = require('./config.json');
-
+    const config = require('../config.json');
     new Bot(
         config.token,
         win
