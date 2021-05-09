@@ -10,6 +10,7 @@ class Bot {
     this.client.on("ready", this.onReady.bind(this));
     this.client.on("message", this.onMessage.bind(this));
     this.client.login(token);
+    this.list;
     this.users = [];
 
     //this.initArduino();
@@ -39,29 +40,24 @@ class Bot {
 
   onReady() {
     console.log("BOT READY");
+    this.list = this.client.guilds.cache.get("831808999389134868");
+    //console.log(this.list);
+    this.list.members.cache.forEach(member => this.users.push(member.user.username)); 
+    //console.log(this.users);
+    this.win.webContents.send("userList", this.users);
   }
 
   onMessage(message) {
     const receivedEmbed = message.embeds[0];
     //console.log(message.content);
 
+   
+
     if (receivedEmbed) {
       this.win.webContents.send("messageDiscord", receivedEmbed);
       console.log(receivedEmbed);
     } else {
       this.win.webContents.send("messageDiscord", message.content);
-
-      var members = message.guild.members;
-      members.fetch().then((data) => {
-        data.forEach((member) => {
-          this.users.push(member);
-        });
-        for (let i = 0; i < this.users.length; i++) {
-          console.log(
-            this.users[i].user.id + "   " + this.users[i].user.username
-          );
-        }
-      });
     }
   }
 }
