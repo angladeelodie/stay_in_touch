@@ -1,57 +1,57 @@
 {
-    "labels":[
-       "HAPPINESS",
-       "JEALOUSY",
-       "LOVE",
-       "FEAR",
-       "ANGRINESS",
-       "SADNESS"
-    ],
-    "datasets":[
-       {
-          "label":"USER1",
-          "backgroundColor":"rgba(255,255,255,0.0)",
-          "borderColor":"rgba(0,0,0,1)",
-          "pointHoverBackgroundColor":"rgba(28,78,214,1)",
-          "pointHoverBorderColor":"rgba(28,78,214,1)",
-          "data":[
-             65,
-             59,
-             90,
-             81,
-             56,
-             55
-          ]
-       },
-       {
-          "label":"USER2",
-          "backgroundColor":"rgba(255,255,255,0.0)",
-          "borderColor":"rgba(0,0,0,1)",
-          "pointHoverBackgroundColor":"rgba(28,78,214,1)",
-          "pointHoverBorderColor":"rgba(28,78,214,1)",
-          "data":[
-             28,
-             48,
-             40,
-             19,
-             96,
-             27
-          ]
-       },
-       {
-          "label":"USER3",
-          "backgroundColor":"rgba(255,255,255,0.0)",
-          "borderColor":"rgba(0,0,0,1)",
-          "pointHoverBackgroundColor":"rgba(28,78,214,1)",
-          "pointHoverBorderColor":"rgba(28,78,214,1)",
-          "data":[
-             52,
-             30,
-             100,
-             67,
-             23,
-             27
-          ]
-       }
-    ]
- }
+   "labels": [
+      "LOVE",
+      "ANGER",
+      "HAPPINESS",
+      "FEAR",
+      "JEALOUSY",
+      "SADNESS"
+   ],
+   "datasets": [
+      {
+         "label": "angladeelodie",
+         "backgroundColor": "rgba(255,255,255,0.0)",
+         "borderColor": "rgba(0,0,0,1)",
+         "pointHoverBackgroundColor": "rgba(28,78,214,1)",
+         "pointHoverBorderColor": "rgba(28,78,214,1)",
+         "data": [
+            65,
+            59,
+            90,
+            81,
+            56,
+            55
+         ]
+      },
+      {
+         "label": "Mélanie",
+         "backgroundColor": "rgba(255,255,255,0.0)",
+         "borderColor": "rgba(0,0,0,1)",
+         "pointHoverBackgroundColor": "rgba(28,78,214,1)",
+         "pointHoverBorderColor": "rgba(28,78,214,1)",
+         "data": [
+            28,
+            48,
+            40,
+            19,
+            96,
+            27
+         ]
+      },
+      {
+         "label": "Soraya",
+         "backgroundColor": "rgba(255,255,255,0.0)",
+         "borderColor": "rgba(0,0,0,1)",
+         "pointHoverBackgroundColor": "rgba(28,78,214,1)",
+         "pointHoverBorderColor": "rgba(28,78,214,1)",
+         "data": [
+            52,
+            30,
+            100,
+            67,
+            23,
+            27
+         ]
+      }
+   ]
+}
