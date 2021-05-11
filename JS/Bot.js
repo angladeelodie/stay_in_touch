@@ -48,17 +48,18 @@ class Bot {
   }
 
   onMessage(message) {
-    const receivedEmbed = message.embeds[0];
     //console.log(message.content);
-
-   
-
-    if (receivedEmbed) {
-      this.win.webContents.send("messageDiscord", receivedEmbed);
-      console.log(receivedEmbed);
-    } else {
-      this.win.webContents.send("messageDiscord", message.content);
-    }
+    //console.log(message.author.username);
+    var messageInfos = {
+      content: message.content,
+      author: message.author.username
+    };
+  
+    //console.log(messageInfos);
+      this.win.webContents.send("messageDiscord", messageInfos);
+      //this.win.webContents.send("messageDiscord", message.content);
+      
+    
   }
 }
 
