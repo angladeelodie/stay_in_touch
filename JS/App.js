@@ -33,6 +33,7 @@ class App {
     this.chart2;
     this.chart3;
     this.chart4;
+    this.users = [];
   }
 
   initListeners() {
@@ -44,8 +45,21 @@ class App {
   fillUserList(event, userList) {
     const data2json = "./JS/ChartData/data2.json";
     const data2 = require(data2json);
+
+    const usersJson = "./JS/ChartData/users.json";
+    var users = require(usersJson);
+
     userList.pop();
-    //this.members = userList;
+    console.log(userList);
+    users = userList;
+    console.log(users);
+    fs.writeFile(usersJson, JSON.stringify(users), function writeJSON(err) {
+      if (err) return console.log(err);
+      //console.log(JSON.stringify(data2));
+      //console.log('writing to ' + data2json);
+    });
+    
+    this.users = users;
     data2.labels = userList;
 
     const data1json = "./JS/ChartData/data1.json";
@@ -105,7 +119,29 @@ class App {
 
   clickChart(event, labels) {
     let clickedElement = this.chart2.getElementsAtEventForMode(event, 'nearest',{ intersect: true }, true);
-    console.log(clickedElement[0].index)
+    let clickedUserIndex = clickedElement[0].index;
+
+    const usersJson = "./JS/ChartData/users.json";
+    var users = require(usersJson);
+
+    console.log(users);
+    for(let i=0; i<users.length;i++){
+      if(i == clickedUserIndex){
+        this.chart1.getDatasetMeta(i).hidden = false;
+      } else {
+        this.chart1.getDatasetMeta(i).hidden = true;
+      }
+    }
+    this.chart1.update();
+
+
+
+    // console.log(this.chart4.getDatasetMeta(0));
+    // this.chart4.getDatasetMeta(1).hidden = true;
+    // this.chart4.update();
+
+
+
  }
 
   drawChart3() {
@@ -127,14 +163,14 @@ class App {
     var options4 = require("./JS/ChartData/options4.json");
     var chart4canvas = document.getElementById("chart4");
 
-    if (chart4canvas != null) {
-      console.log("chart 4");
-      this.chart4 = new Chart(chart4canvas, {
-        type: "radar",
-        data: data4,
-        options: options4,
-      });
-    }
+    // if (chart4canvas != null) {
+    //   console.log("chart 4");
+    //   this.chart4 = new Chart(chart4canvas, {
+    //     type: "radar",
+    //     data: data4,
+    //     options: options4,
+    //   });
+    // }
   }
 
   drawAllCharts() {
@@ -233,20 +269,15 @@ class App {
 
         ///CHART 4
         // copier les données de chart 1 dans chart 4
-          fs.writeFile(data4json, JSON.stringify(data1), function writeJSON(err) {
-              if (err) return console.log(err);
-            });  
+          // fs.writeFile(data4json, JSON.stringify(data1), function writeJSON(err) {
+          //     if (err) return console.log(err);
+          //   });  
         //cacher les users pas concernés     
-        console.log(this.chart4.getDatasetMeta(0));
-        this.chart4.getDatasetMeta(1).hidden = true;
-        this.chart4.update();
-       
-
-
+        // console.log(this.chart4.getDatasetMeta(0));
+        // this.chart4.getDatasetMeta(1).hidden = true;
+        // this.chart4.update();
+      
         }
-
-      
-      
       }
     }
 
