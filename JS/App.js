@@ -27,7 +27,7 @@ class App {
     //this.members;
     this.isDiscordReady = false;
     this.initListeners();
-    this.onClick();
+   
 
     this.chart1;
     this.chart2;
@@ -93,11 +93,20 @@ class App {
         type: "bar",
         data: data2,
         options: options2,
+        events:["click"]
       });
     }
-    CHART2 = this.chart2;
-    console.log(CHART2);
+
+    this.chart2.options.onClick = this.clickChart.bind(this);
+    //this.chart2.options.onClick = this.clickChart();
+
+    
   }
+
+  clickChart(event, labels) {
+    let clickedElement = this.chart2.getElementsAtEventForMode(event, 'nearest',{ intersect: true }, true);
+    console.log(clickedElement[0].index)
+ }
 
   drawChart3() {
     var data3 = require("./JS/ChartData/data3.json");
@@ -142,10 +151,21 @@ class App {
  
   }
 
-  onClick(){
-    console.log("clicked from app");
-  }
+  // onClick(){
+  //   console.log("clicked from app");
+  //   $("#chart2").click(function(e) {
+      
+  //     var activePoints = app.this.chart2.getElementsAtEvent(e);
 
+  //     // let's say you wanted to perform different actions based on label selected
+  //     if (activePoints[0]._model.label == "label you are looking for") {}
+  //     console.log(activePoints)
+
+  //     //app.onClick();
+  //   });
+  // }
+
+ 
   onMessage(event, message) {
     const data3json = "./JS/ChartData/data3.json";
     const data3 = require(data3json);
@@ -245,13 +265,7 @@ window.onload = () => {
   app.drawAllCharts();
 };
 
-$( document ).ready(function() {
-    $("#chart2").click(function() {
-        console.log(app);
-        app.onClick();
-      });
 
-});
 
 
 

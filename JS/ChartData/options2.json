@@ -1,32 +1,36 @@
 {
-    "plugins":{
-       "legend":{
-          "display":false
-       }
-    },
-    "barThickness":10,
-    "hoverBackgroundColor":"blue",
-    "scales":{
-       "x":{
-          "ticks":{
-             "color":"black",
-             "font":{
-                "size":15
-             }
-          },
-          "grid":{
-             "display":false,
-             "drawBorder":false
-          }
-       },
-       "y":{
-          "ticks":{
-             "display":false
-          },
-          "grid":{
-             "display":false,
-             "drawBorder":false
-          }
-       }
-    }
- }
+   "plugins": {
+      "legend": {
+         "display": false
+      }
+   },
+   "tooltips": {
+      "mode": "nearest"
+   },
+   "onClick": "showData",
+   "barThickness": 10,
+   "hoverBackgroundColor": "blue",
+   "scales": {
+      "x": {
+         "ticks": {
+            "color": "black",
+            "font": {
+               "size": 15
+            }
+         },
+         "grid": {
+            "display": false,
+            "drawBorder": false
+         }
+      },
+      "y": {
+         "ticks": {
+            "display": false
+         },
+         "grid": {
+            "display": false,
+            "drawBorder": false
+         }
+      }
+   }
+}
