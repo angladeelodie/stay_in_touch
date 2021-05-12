@@ -131,3 +131,16 @@ a {
   display: flex;
   flex-direction: column;
 }
+
+#userInfo{
+  padding-left: 2vw;
+  background-color: #2400FF;
+  padding-bottom: 5vh;
+  margin-left:80vh;
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+}
+
+#userInfo h2, #userInfo span{
+  color:white;
+}

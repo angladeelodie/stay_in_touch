@@ -134,6 +134,9 @@ class App {
     }
     this.chart1.update();
 
+    $("#userInfo").css("margin-left","0vw");
+    $("#groupName a").text("Emotional Level");
+
 
 
     // console.log(this.chart4.getDatasetMeta(0));
@@ -242,11 +245,11 @@ class App {
         var currPoints3 = data3.datasets[emotionIndex].data[0].r;
         data3.datasets[emotionIndex].data[0].r = currPoints3 + points;
 
-        // fs.writeFile(data3json, JSON.stringify(data3), function writeJSON(err) {
-        //     if (err) return console.log(err);
-        //   });
-        //   this.chart3.destroy();
-        //   this.drawChart3();
+        fs.writeFile(data3json, JSON.stringify(data3), function writeJSON(err) {
+            if (err) return console.log(err);
+          });
+          this.chart3.destroy();
+          this.drawChart3();
 
         ///CHART 1
         //checker quel est l'index du dataset de l'user
@@ -261,11 +264,11 @@ class App {
             console.log(data1.datasets[i].data[emotionIndex]);
           }
 
-        //   fs.writeFile(data1json, JSON.stringify(data1), function writeJSON(err) {
-        //       if (err) return console.log(err);
-        //     });  
-        //   this.chart1.destroy();
-        //   this.drawChart1();
+          fs.writeFile(data1json, JSON.stringify(data1), function writeJSON(err) {
+              if (err) return console.log(err);
+            });  
+          this.chart1.destroy();
+          this.drawChart1();
 
         ///CHART 4
         // copier les données de chart 1 dans chart 4
@@ -285,6 +288,10 @@ class App {
     // for (let i = 0; i < data3.datasets.length; i++) {
     //   data3.datasets[i].data[0].r = 15;
     // }
+    // this.chart3.destroy();
+    // this.drawChart3();
+
+    
   }
 
 
@@ -296,7 +303,12 @@ window.onload = () => {
   app.drawAllCharts();
 };
 
-
+$( document ).ready(function() {
+  $("#userName").click(function() {
+    console.log("clicked");
+    $("#userInfo").css("margin-left","80vw");
+  });
+});
 
 
 
